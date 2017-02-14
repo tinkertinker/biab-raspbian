@@ -22,6 +22,7 @@ update_issue $(basename ${EXPORT_DIR})
 install -m 644 ${ROOTFS_DIR}/etc/rpi-issue ${ROOTFS_DIR}/boot/issue.txt
 install files/LICENSE.oracle ${ROOTFS_DIR}/boot/
 
+ROOTFS_DIR=`readlink -f ${ROOTFS_DIR}`
 ROOT_DEV=$(mount | grep "${ROOTFS_DIR} " | cut -f1 -d' ')
 
 unmount ${ROOTFS_DIR}
