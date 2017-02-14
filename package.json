@@ -1,0 +1,22 @@
+{
+  "name": "biab-raspbian",
+  "version": "1.0.0",
+  "description": "Blog In A Box version of Raspbian image builder",
+  "main": "index.js",
+  "scripts": {
+    "start": "vagrant up",
+	"stop": "vagrant halt",
+	"build": "vagrant ssh -c 'cd /vagrant; sudo IMG_NAME=BlogInABox ./build.sh'",
+	"copy": "vagrant ssh -c 'cp /vagrant/work/`date +%Y-%m-%d-BlogInABox/export-image/%Y-%m-%d-BlogInABox-lite.img` /vagrant/deploy'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tinkertinker/biab-raspbian.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tinkertinker/biab-raspbian/issues"
+  },
+  "homepage": "https://github.com/tinkertinker/biab-raspbian#readme"
+}
