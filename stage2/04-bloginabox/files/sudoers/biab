@@ -1,0 +1,2 @@
+# Gives PHP access to run our Blog In A Box device scripts
+www-data ALL=(pi:pi) NOPASSWD: /opt/bloginabox/biab

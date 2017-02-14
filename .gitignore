@@ -4,3 +4,6 @@ config
 SKIP
 .pc
 *-pc
+/work
+/.vagrant
+/npm-debug.log
