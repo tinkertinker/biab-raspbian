@@ -4,7 +4,7 @@ WP="/usr/local/bin/wp $WP_PATH"
 SUDO_PI="sudo -u pi"
 
 systemctl disable getty@tty1.service
-/usr/bin/fbi -T 1 -noverbose -a /opt/bloginabox/boot/biab-setup.jpg >/dev/null
+/usr/bin/fbi -T 1 -noverbose -a /opt/bloginabox/boot/biab-setup.png >/dev/null
 
 # Load config values
 echo "Blog In A Box setup"
@@ -49,7 +49,9 @@ $SUDO_PI $WP widget reset --all
 $SUDO_PI $WP site empty --yes
 $SUDO_PI $WP rewrite structure '/%year%/%monthnum%/%day%/%postname%/'
 POSTID=`$SUDO_PI $WP post create --porcelain --post_type=post --post_title='Welcome to Blog In A Box!' --post_content='Visit <a href="/wp-admin/admin.php?page=biab-plugin">WP Admin</a> to configure Blog In A Box for your hardware' --post_status=publish`
-$SUDO_PI $WP media import /home/pi/install/first-post.jpg --post_id=$POSTID --featured_image
+$SUDO_PI $WP media import /home/pi/install/first-post.png --post_id=$POSTID --featured_image
+rm -f /opt/wordpress/keys.txt
+
 echo '{"username":"'$WP_USERNAME'","password":"'$WP_PASSWORD'"}' >/opt/bloginabox/auth.json
 
 echo "Setting up PHP"
@@ -68,12 +70,10 @@ fi
 if [ "$WIFI_NETWORK" != "" ]; then
 	echo "Enabling Wifi on $WIFI_NETWORK"
 	echo "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev" > /etc/wpa_supplicant/wpa_supplicant.conf
-	echo "update_config=1\n" >> /etc/wpa_supplicant/wpa_supplicant.conf
+	echo "update_config=1" >> /etc/wpa_supplicant/wpa_supplicant.conf
 	echo "network={"  >> /etc/wpa_supplicant/wpa_supplicant.conf
 	echo '  ssid="'$WIFI_NETWORK'"' >> /etc/wpa_supplicant/wpa_supplicant.conf
 	echo '  '$WIFI_PSK'="'$WIFI_PASSWORD'"' >> /etc/wpa_supplicant/wpa_supplicant.conf
-	echo '  scan_ssid=1' >> /etc/wpa_supplicant/wpa_supplicant.conf
-	echo '  key_mgmt="'$WIFI_MGMT'"' >> /etc/wpa_supplicant/wpa_supplicant.conf
 	echo '}'  >> /etc/wpa_supplicant/wpa_supplicant.conf
 fi
 

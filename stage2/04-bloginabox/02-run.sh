@@ -72,7 +72,7 @@ fi
 # Blog In A Box WP stuff
 echo "Setting up Blog In A Box theme and plugin"
 mkdir -p ${ROOTFS_DIR}/home/pi/install
-install -m 755 files/first-post.jpg ${ROOTFS_DIR}/home/pi/install/
+install -m 755 files/first-post.png ${ROOTFS_DIR}/home/pi/install/
 
 if [ -d ${ROOTFS_DIR}/opt/wordpress/wp-content/themes/biab-theme ]; then
 	git --git-dir=${ROOTFS_DIR}/opt/wordpress/wp-content/themes/biab-theme/.git pull
