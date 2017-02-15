@@ -38,7 +38,16 @@ echo "Setting up Nginx"
 sed -i "s/server_name.*/server_name ${HOSTNAME_URL};/g" /etc/nginx/sites-available/biab
 
 echo "Setting up WordPress"
-$SUDO_PI $WP core config --dbname=$MYSQL_WP_DATABASE --dbuser=$MYSQL_WP_USER --dbpass=$MYSQL_WP_PASSWORD
+echo "define( 'AUTH_KEY', '"`pwgen 64 1 -s`"' );" >/opt/wordpress/keys.txt
+echo "define( 'SECURE_AUTH_KEY', '"`pwgen 64 1 -s`"' );" >>/opt/wordpress/keys.txt
+echo "define( 'LOGGED_IN_KEY', '"`pwgen 64 1 -s`"' );" >>/opt/wordpress/keys.txt
+echo "define( 'NONCE_KEY', '"`pwgen 64 1 -s`"' );" >>/opt/wordpress/keys.txt
+echo "define( 'AUTH_SALT', '"`pwgen 64 1 -s`"' );" >>/opt/wordpress/keys.txt
+echo "define( 'SECURE_AUTH_SALT', '"`pwgen 64 1 -s`"' );" >>/opt/wordpress/keys.txt
+echo "define( 'LOGGED_IN_SALT', '"`pwgen 64 1 -s`"' );" >>/opt/wordpress/keys.txt
+echo "define( 'NONCE_SALT', '"`pwgen 64 1 -s`"' );" >>/opt/wordpress/keys.txt
+
+$SUDO_PI $WP core config --dbname=$MYSQL_WP_DATABASE --dbuser=$MYSQL_WP_USER --dbpass=$MYSQL_WP_PASSWORD --skip-salts --extra-php </opt/wordpress/keys.txt
 $SUDO_PI $WP core install --url=$HOSTNAME_URL --title="$WP_BLOG_TITLE" --admin_user=$WP_USERNAME --admin_password=$WP_PASSWORD --skip-email --admin_email=$WP_EMAIL
 $SUDO_PI $WP core update
 $SUDO_PI $WP option update blogdescription "$WP_TAGLINE"
