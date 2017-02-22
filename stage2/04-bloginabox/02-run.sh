@@ -96,8 +96,6 @@ chown pi:pi -R /opt/wordpress/wp-content/themes/biab-theme
 chown pi:pi -R /opt/wordpress/wp-content/plugins/biab-plugin
 mkdir -p -m 777 /opt/wordpress/wp-content/uploads
 chmod u+x /opt/bloginabox/biab
-ln -sf /opt/wordpress /home/pi/wordpress
-chown pi:pi /home/pi/wordpress
 apt-get autoclean
 apt-get clean
 EOF

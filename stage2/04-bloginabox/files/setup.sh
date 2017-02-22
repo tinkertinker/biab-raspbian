@@ -65,6 +65,7 @@ POSTID=`$SUDO_PI $WP post create --porcelain --post_type=post --post_title='Welc
 $SUDO_PI $WP media import /home/pi/install/first-post.png --post_id=$POSTID --featured_image
 rm -f /opt/wordpress/keys.txt
 rm -f /home/pi/wordpress.zip
+$SUDO_PI ln -sf /opt/wordpress /home/pi/wordpress
 
 echo '{"username":"'$WP_USERNAME'","password":"'$WP_PASSWORD'"}' >/opt/bloginabox/auth.json
 

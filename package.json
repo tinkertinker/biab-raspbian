@@ -9,6 +9,7 @@
     "build": "vagrant ssh -c 'cd /vagrant && sudo IMG_NAME=BlogInABox ./build.sh'",
     "copy": "vagrant ssh -c 'cp /vagrant/work/`date +%Y-%m-%d-BlogInABox/export-image/%Y-%m-%d-BlogInABox-lite.img` /vagrant/deploy'",
 	"clean": "rm ./deploy/*.img ./deploy/*.zip && vagrant ssh -c 'sudo find /home/vagrant/work -maxdepth 1 -type d ! -iname `date +%Y-%m-%d-BlogInABox` ! -iname . -exec rm -r {} \\;'",
+	"superclean": "npm run clean && vagrant ssh -c 'sudo find /home/vagrant/work -maxdepth 1 -type d ! -iname . -exec rm -r {} \\;'",
     "release": "node publish.js"
   },
   "repository": {
