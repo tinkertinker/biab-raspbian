@@ -50,6 +50,14 @@ If you want a copy of the unzipped image on your local machine:
 
 `npm run copy`
 
+## Release
+
+Set the `GH_TOKEN` environment variable to an application specific Github password. Then run:
+
+`npm run release`
+
+This will take the latest built image and upload it to Github as a draft release. Edit the details of the release and publish.
+
 ## Caveats
 
 When modifying the Blog In A Box script there are some things to bear in mind.

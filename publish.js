@@ -2,6 +2,7 @@ const PublishRelease = require( 'publish-release' );
 const ProgressBar = require( 'progress' );
 const fs = require( 'fs' );
 const path = require( 'path' );
+const package = require( './package.json' );
 
 const DIR = './deploy';
 const UPLOAD = './deploy/blog-in-a-box.zip';
@@ -33,7 +34,9 @@ function getNewestFile( dir, regexp ) {
 
 function publishIt( stat, cb ) {
 	let last = 0;
-	const bar = new ProgressBar( ':bar :rate :percent :etas', {
+	const bar = new ProgressBar( '[:bar] :percent time remaining :etas', {
+		complete: '=',
+		incomplete: ' ',
 		width: 20,
 		total: stat.size
 	} );
@@ -42,8 +45,8 @@ function publishIt( stat, cb ) {
 		token: process.env.GH_TOKEN,
 		owner: 'tinkertinker',
 		repo: 'biab-raspbian',
-		tag: 'v1.0.0',
-		name: 'Release v1.0.0',
+		tag: 'v' + package.version,
+		name: 'Release v' + package.version,
 		notes: '',
 		draft: true,
 		prerelease: false,
@@ -53,7 +56,7 @@ function publishIt( stat, cb ) {
 	}, cb );
 
 	publish.on( 'upload-asset', name => {
-		console.log( 'Uploading ' + name );
+		console.log( 'Uploading ' + name + ' v' + package.version );
 	} );
 
 	publish.on( 'upload-progress', ( name, progress ) => {
