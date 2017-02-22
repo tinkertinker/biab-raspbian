@@ -6,10 +6,10 @@ Vagrant.configure("2") do |config|
     sudo apt-get -y install quilt qemu-user-static debootstrap pxz zip bsdtar
   	curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
 	. /home/vagrant/.nvm/nvm.sh
-	nvm install v7.5.0
-	nvm use v7.5.0
-	sudo ln -s /home/vagrant/.nvm/versions/node/v7.5.0/bin/node /usr/bin/node
-	sudo ln -s /home/vagrant/.nvm/versions/node/v7.5.0/bin/npm /usr/bin/npm
+	nvm install v6.9.4
+	nvm use v6.9.4
+	sudo ln -s /home/vagrant/.nvm/versions/node/v6.9.4/bin/node /usr/bin/node
+	sudo ln -s /home/vagrant/.nvm/versions/node/v6.9.4/bin/npm /usr/bin/npm
 	mkdir -p /home/vagrant/work
 	ln -s /home/vagrant/work /vagrant/work
   SHELL
