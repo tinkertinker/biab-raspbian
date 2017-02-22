@@ -7,3 +7,4 @@ SKIP
 /work
 /.vagrant
 /npm-debug.log
+/node_modules
