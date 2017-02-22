@@ -47,9 +47,13 @@ echo "define( 'SECURE_AUTH_SALT', '"`pwgen 64 1 -s`"' );" >>/opt/wordpress/keys.
 echo "define( 'LOGGED_IN_SALT', '"`pwgen 64 1 -s`"' );" >>/opt/wordpress/keys.txt
 echo "define( 'NONCE_SALT', '"`pwgen 64 1 -s`"' );" >>/opt/wordpress/keys.txt
 
+cp /boot/biab/wordpress.zip /home/pi
 $SUDO_PI $WP core config --dbname=$MYSQL_WP_DATABASE --dbuser=$MYSQL_WP_USER --dbpass=$MYSQL_WP_PASSWORD --skip-salts --extra-php </opt/wordpress/keys.txt
 $SUDO_PI $WP core install --url=$HOSTNAME_URL --title="$WP_BLOG_TITLE" --admin_user=$WP_USERNAME --admin_password=$WP_PASSWORD --skip-email --admin_email=$WP_EMAIL
-$SUDO_PI $WP core update
+echo "Applying local WP update"
+$SUDO_PI $WP core update --force /home/pi/wordpress.zip
+echo "Trying remote WP update"
+$SUDO_PI $WP core update --force
 $SUDO_PI $WP option update blogdescription "$WP_TAGLINE"
 $SUDO_PI $WP theme activate biab-theme
 $SUDO_PI $WP plugin activate biab-plugin
@@ -60,6 +64,7 @@ $SUDO_PI $WP rewrite structure '/%year%/%monthnum%/%day%/%postname%/'
 POSTID=`$SUDO_PI $WP post create --porcelain --post_type=post --post_title='Welcome to Blog In A Box!' --post_content='Visit <a href="/wp-admin/admin.php?page=biab-plugin">WP Admin</a> to configure Blog In A Box for your hardware' --post_status=publish`
 $SUDO_PI $WP media import /home/pi/install/first-post.png --post_id=$POSTID --featured_image
 rm -f /opt/wordpress/keys.txt
+rm -f /home/pi/wordpress.zip
 
 echo '{"username":"'$WP_USERNAME'","password":"'$WP_PASSWORD'"}' >/opt/bloginabox/auth.json
 

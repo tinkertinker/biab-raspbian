@@ -112,6 +112,7 @@ install -m 644 files/smb.conf ${ROOTFS_DIR}/etc/samba/
 install -m 744 files/profile/.bash_profile ${ROOTFS_DIR}/home/pi/
 install -m 744 files/profile/.bashrc ${ROOTFS_DIR}/home/pi/
 install -m 744 files/profile/.dircolors ${ROOTFS_DIR}/home/pi/
+install -m 744 files/get-calypso ${ROOTFS_DIR}/home/pi/
 install -d -m 700 ${ROOTFS_DIR}/home/pi/.ssh
 
 on_chroot << EOF
@@ -119,6 +120,7 @@ chown pi:pi /home/pi/.bash_profile
 chown pi:pi /home/pi/.bashrc
 chown pi:pi /home/pi/.dircolors
 chown pi:pi /home/pi/.ssh
+chown pi:pi /home/pi/get-calypso
 EOF
 
 echo "start_x=1" >>${ROOTFS_DIR}/boot/config.txt
@@ -130,3 +132,7 @@ downloadUrl http://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-armv
 downloadUrl https://raw.githubusercontent.com/wp-cli/wp-cli/master/utils/wp-completion.bash ../.wpcli.bash
 downloadUrl https://phar.phpunit.de/phpunit.phar phpunit.phar
 downloadUrl https://getcomposer.org/composer.phar composer.phar
+
+on_chroot << EOF
+chown pi:pi /home/pi/.wpcli.bash
+EOF
