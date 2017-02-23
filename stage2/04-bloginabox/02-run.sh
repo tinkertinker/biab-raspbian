@@ -111,6 +111,7 @@ install -m 744 files/profile/.bash_profile ${ROOTFS_DIR}/home/pi/
 install -m 744 files/profile/.bashrc ${ROOTFS_DIR}/home/pi/
 install -m 744 files/profile/.dircolors ${ROOTFS_DIR}/home/pi/
 install -m 744 files/get-calypso ${ROOTFS_DIR}/home/pi/
+install -m 644 files/issue ${ROOTFS_DIR}/etc/
 install -d -m 700 ${ROOTFS_DIR}/home/pi/.ssh
 
 on_chroot << EOF
