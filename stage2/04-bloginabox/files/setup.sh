@@ -4,7 +4,7 @@ WP="/usr/local/bin/wp $WP_PATH"
 SUDO_PI="sudo -u pi"
 
 systemctl disable getty@tty1.service
-/usr/bin/fbi -T 1 -noverbose -a /opt/bloginabox/boot/biab-setup.png >/dev/null
+/usr/bin/fbi -d /dev/fb0 --noverbose --nocomments -a /opt/bloginabox/boot/biab-setup.png
 
 # Load config values
 echo "Blog In A Box setup"

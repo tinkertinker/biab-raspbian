@@ -4,7 +4,7 @@ DefaultDependencies=no
 After=local-fs.target
 
 [Service]
-ExecStart=/usr/bin/fbi -d /dev/fb0 --noverbose -a /opt/bloginabox/boot/biab.png >/dev/null
+ExecStart=/usr/bin/fbi -d /dev/fb0 --noverbose --nocomments -a /opt/bloginabox/boot/biab.png
 StandardInput=tty
 StandardOutput=tty
 
