@@ -22,3 +22,6 @@
 # m h  dom mon dow   command
 0 8 * * * /usr/local/bin/wp core update --path=/opt/wordpress/
 0 8 * * * /usr/local/bin/wp plugin update --all --path=/opt/wordpress/
+0 8 * * * cd /opt/wordpress/wp-content/plugins/biab-plugin && git pull
+0 8 * * * cd /opt/wordpress/wp-content/themes/biab-theme && git pull
+0 8 * * * cd /opt/bloginabox && git pull
