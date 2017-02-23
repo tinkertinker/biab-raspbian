@@ -4,7 +4,7 @@ WP="/usr/local/bin/wp $WP_PATH"
 SUDO_PI="sudo -u pi"
 
 systemctl disable getty@tty1.service
-/usr/bin/fbi -d /dev/fb0 --noverbose --nocomments -a /opt/bloginabox/boot/biab-setup.png
+/usr/bin/fbi -T 1 --noverbose --nocomments -a /opt/bloginabox/boot/biab-setup.png
 
 # Load config values
 echo "Blog In A Box setup"
@@ -61,8 +61,7 @@ $SUDO_PI $WP plugin activate basic-auth
 $SUDO_PI $WP widget reset --all
 $SUDO_PI $WP site empty --yes
 $SUDO_PI $WP rewrite structure '/%year%/%monthnum%/%day%/%postname%/'
-POSTID=`$SUDO_PI $WP post create --porcelain --post_type=post --post_title='Welcome to Blog In A Box!' --post_content='Visit <a href="/wp-admin/admin.php?page=biab-plugin">WP Admin</a> to configure Blog In A Box for your hardware' --post_status=publish`
-$SUDO_PI $WP media import /home/pi/install/first-post.png --post_id=$POSTID --featured_image
+$SUDO_PI $WP post create --post_type=post --post_title='Welcome to Blog In A Box!' --post_content='<p><img src="/wp-content/uploads/first-post.png" /></p><p>Visit <a href="/wp-admin/admin.php?page=biab-plugin">WP Admin</a> to configure Blog In A Box for your hardware</p>' --post_status=publish
 rm -f /opt/wordpress/keys.txt
 rm -f /home/pi/wordpress.zip
 $SUDO_PI ln -sf /opt/wordpress /home/pi/wordpress
