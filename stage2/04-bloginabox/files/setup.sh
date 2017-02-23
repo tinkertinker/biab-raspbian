@@ -74,10 +74,18 @@ mv /home/pi/install/phpunit.phar /usr/local/bin/phpunit
 mv /home/pi/install/composer.phar /usr/local/bin/composer
 chmod +x /usr/local/bin/phpunit /usr/local/bin/composer
 
+echo "Enabling firewall"
+ufw default deny incoming
+ufw allow ssh
+ufw allow www
+ufw allow bonjour
+ufw enable
+
 if [ "$SAMBA_WORKGROUP" != "" ]; then
 	echo "Enabling SAMBA share: ${SAMBA}"
 	sed -i "s/.*workgroup =.*/workgroup = ${SAMBA_WORKGROUP}/g" /etc/samba/smb.conf
 	( echo "$PI_USER_PASSWORD"; echo "$PI_USER_PASSWORD" ) | smbpasswd -a -s pi
+	ufw allow cifs
 else
 	apt-get remove samba samba-common-bin
 fi
