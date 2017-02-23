@@ -96,7 +96,7 @@ if [ "$WIFI_NETWORK" != "" ]; then
 	echo "update_config=1" >> /etc/wpa_supplicant/wpa_supplicant.conf
 	echo "network={"  >> /etc/wpa_supplicant/wpa_supplicant.conf
 	echo '  ssid="'$WIFI_NETWORK'"' >> /etc/wpa_supplicant/wpa_supplicant.conf
-	echo '  '$WIFI_PSK'="'$WIFI_PASSWORD'"' >> /etc/wpa_supplicant/wpa_supplicant.conf
+	echo '  psk="'$WIFI_PASSWORD'"' >> /etc/wpa_supplicant/wpa_supplicant.conf
 	echo '}'  >> /etc/wpa_supplicant/wpa_supplicant.conf
 fi
 
