@@ -79,9 +79,9 @@ if [ -d ${ROOTFS_DIR}/opt/wordpress/wp-content/themes/biab-theme ]; then
 	git --git-dir=${ROOTFS_DIR}/opt/bloginabox/.git pull
 	git --git-dir=${ROOTFS_DIR}/opt/wordpress/wp-content/plugins/basic-auth/.git pull
 else
-	git clone https://github.com/tinkertinker/biab-theme.git ${ROOTFS_DIR}/opt/wordpress/wp-content/themes/biab-theme
-	git clone https://github.com/tinkertinker/biab-plugin.git ${ROOTFS_DIR}/opt/wordpress/wp-content/plugins/biab-plugin
-	git clone https://github.com/tinkertinker/biab-cli.git ${ROOTFS_DIR}/opt/bloginabox
+	git clone https://github.com/Automattic/biab-theme.git ${ROOTFS_DIR}/opt/wordpress/wp-content/themes/biab-theme
+	git clone https://github.com/Automattic/biab-plugin.git ${ROOTFS_DIR}/opt/wordpress/wp-content/plugins/biab-plugin
+	git clone https://github.com/Automattic/biab-cli.git ${ROOTFS_DIR}/opt/bloginabox
 	git clone https://github.com/WP-API/Basic-Auth.git ${ROOTFS_DIR}/opt/wordpress/wp-content/plugins/basic-auth
 fi
 

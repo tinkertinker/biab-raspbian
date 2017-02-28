@@ -1,6 +1,6 @@
 # Blog In A Box Raspbian
 
-This is a fork of [Raspbian](https://github.com/RPi-Distro/pi-gen), a tool used to create the raspberrypi.org Raspbian images.
+This is a fork of [Raspbian](https://github.com/RPi-Distro/pi-gen), a tool used to create the raspberrypi.org Raspbian images, and used to create the install image for [Blog In A Box](https://inabox.blog/).
 
 The idea behind this modification to Raspbian is that we bundle a fully working WordPress environment with Raspbian that has minimal post-install configuration.
 
