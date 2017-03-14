@@ -12,10 +12,10 @@ echo "Blog In A Box setup"
 
 echo "Setting up Node"
 mv /home/pi/install/nvm /home/pi/.nvm
-mkdir -p /home/pi/.nvm/.cache/bin/node-v$NODE_VERSION-linux-armv7l
+mkdir -p /home/pi/.nvm/.cache/bin/node-v$NODE_VERSION-linux-armv6l
 mkdir -p /home/pi/.nvm/versions/node/v$NODE_VERSION
-mv /home/pi/install/node-v$NODE_VERSION-linux-armv7l.tar.xz /home/pi/.nvm/.cache/bin/node-v$NODE_VERSION-linux-armv7l/
-tar xf /home/pi/.nvm/.cache/bin/node-v$NODE_VERSION-linux-armv7l/node-v$NODE_VERSION-linux-armv7l.tar.xz --strip-components=1 -C /home/pi/.nvm/versions/node/v$NODE_VERSION/
+mv /home/pi/install/node-v$NODE_VERSION-linux-armv6l.tar.xz /home/pi/.nvm/.cache/bin/node-v$NODE_VERSION-linux-armv6l/
+tar xf /home/pi/.nvm/.cache/bin/node-v$NODE_VERSION-linux-armv6l/node-v$NODE_VERSION-linux-armv6l.tar.xz --strip-components=1 -C /home/pi/.nvm/versions/node/v$NODE_VERSION/
 chown -R pi:pi /home/pi/.nvm
 sudo -u pi bash -c '. /home/pi/.nvm/nvm.sh; nvm use v'$NODE_VERSION
 ln -s /home/pi/.nvm/versions/node/v$NODE_VERSION/bin/node /usr/bin/node

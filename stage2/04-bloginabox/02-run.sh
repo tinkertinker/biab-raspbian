@@ -129,7 +129,7 @@ echo "gpu_mem=128" >>${ROOTFS_DIR}/boot/config.txt
 
 downloadGit https://github.com/amix/vimrc.git vimrc
 downloadGit https://github.com/creationix/nvm.git nvm
-downloadUrl http://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-armv7l.tar.xz node-v$NODE_VERSION-linux-armv7l.tar.xz
+downloadUrl http://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-armv6l.tar.xz node-v$NODE_VERSION-linux-armv6l.tar.xz
 downloadUrl https://raw.githubusercontent.com/wp-cli/wp-cli/master/utils/wp-completion.bash ../.wpcli.bash
 downloadUrl https://phar.phpunit.de/phpunit.phar phpunit.phar
 downloadUrl https://getcomposer.org/composer.phar composer.phar
